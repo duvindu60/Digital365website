@@ -1,0 +1,51 @@
+.maskContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.textWrapper {
+  position: relative;
+}
+
+.maskedText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: transparent;
+  background: url('/images/vcio home.jpg') center center/cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition:
+    transform 1.2s cubic-bezier(0.77, 0, 0.175, 1),
+    opacity 0.3s ease-in-out;
+}
+
+.originalText {
+  color: white;
+  opacity: 0.1;
+}
+
+.animate .maskedText {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Add a subtle animation to the background position for more dynamism */
+@keyframes bgShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate .maskedText {
+  animation: bgShift 20s ease infinite;
+}

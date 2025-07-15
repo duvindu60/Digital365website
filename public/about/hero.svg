@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0066CC"/>
+  <path d="M0 0L1920 1080M1920 0L0 1080" stroke="white" stroke-width="4" stroke-opacity="0.1"/>
+  <rect x="710" y="440" width="500" height="200" rx="20" fill="white" fill-opacity="0.1"/>
+  <text x="960" y="540" font-family="Arial" font-size="48" fill="white" text-anchor="middle" dominant-baseline="middle">Hero Image</text>
+</svg> 

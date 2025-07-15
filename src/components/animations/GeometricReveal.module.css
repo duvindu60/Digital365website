@@ -1,0 +1,58 @@
+.revealContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.clipPath {
+  position: absolute;
+  pointer-events: none;
+}
+
+.revealMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  background-color: #0a0a0a;
+}
+
+.hexagon {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  clip-path: url(#hexagonalClip);
+  background-color: #ef4444;
+  opacity: 0;
+  transform: scale(0);
+  left: var(--x);
+  top: var(--y);
+  transition:
+    transform 0.8s cubic-bezier(0.77, 0, 0.175, 1) var(--delay),
+    opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1) var(--delay);
+}
+
+.reveal .revealMask {
+  animation: maskFadeOut 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.reveal .hexagon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@keyframes maskFadeOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
