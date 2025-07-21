@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function CloudNetworkServices() {
   const features = [
@@ -52,6 +55,10 @@ export default function CloudNetworkServices() {
     'Improved performance and reliability',
   ];
 
+  useEffect(() => {
+      AOS.init({ duration: 1000 });
+    }, []);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
@@ -71,10 +78,14 @@ export default function CloudNetworkServices() {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-4xl md:text-5xl font-bold text-white mb-6">
               Cloud & Network Monitoring Services
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p 
+            data-aos="fade-up"
+                     data-aos-delay="200" className="text-xl text-gray-200 mb-8">
               Comprehensive monitoring solutions to ensure your network and cloud infrastructure
               performs at its best. We focus on proactive monitoring, optimization, and strategic
               guidance for cloud adoption.
@@ -92,7 +103,9 @@ export default function CloudNetworkServices() {
       {/* Main Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Our Monitoring & Cloud Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -114,8 +127,11 @@ export default function CloudNetworkServices() {
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Our Monitoring-First Approach</h2>
-            <p className="text-gray-300 mb-12">
+            <h2 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-8">Our Monitoring-First Approach</h2>
+            <p data-aos="fade-up"
+                     data-aos-delay="200" className="text-gray-300 mb-12">
               We prioritize proactive monitoring over reactive problem-solving. Our comprehensive
               monitoring strategy helps identify and resolve potential issues before they impact
               your business operations.
@@ -171,7 +187,8 @@ export default function CloudNetworkServices() {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Benefits of Our Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -197,9 +214,11 @@ export default function CloudNetworkServices() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>

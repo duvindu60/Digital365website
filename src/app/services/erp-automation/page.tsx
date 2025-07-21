@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const features = [
   {
@@ -61,6 +63,9 @@ export default function ERPAutomationPage() {
         const hasOverflow = container.scrollWidth > container.clientWidth;
         container.classList.toggle('has-overflow', hasOverflow);
       }
+  
+         AOS.init({ duration: 1000 });
+      
     };
 
     window.addEventListener('resize', showScrollIndicators);
@@ -88,10 +93,12 @@ export default function ERPAutomationPage() {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
+            <h1 data-aos= "fade-up"
+                     data-aos-delay="100" className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6">
               ERP & Automation Solutions
             </h1>
-            <p className="text-base md:text-xl text-gray-200 mb-6 md:mb-8">
+            <p data-aos="fade-up"
+                     data-aos-delay="200" className="text-base md:text-xl text-gray-200 mb-6 md:mb-8">
               Transform your business operations with our comprehensive ERP solutions and
               intelligent automation. Streamline processes, improve efficiency, and drive growth
               with cutting-edge technology.
@@ -109,7 +116,8 @@ export default function ERPAutomationPage() {
       {/* Main Features */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">
+          <h2 data-aos= "fade-up"
+                     data-aos-delay="300" className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">
             Our ERP & Automation Services
           </h2>
 
@@ -167,10 +175,12 @@ export default function ERPAutomationPage() {
       <section className="py-12 md:py-20 bg-gradient-to-b from-black via-gray-900/90 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-8">
+            <h2 data-aos= "fade-up"
+                     data-aos-delay="100" className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-8">
               Our Implementation Approach
             </h2>
-            <p className="text-sm md:text-base text-gray-300 mb-8 md:mb-12">
+            <p data-aos= "fade-up"
+                     data-aos-delay="200" className="text-sm md:text-base text-gray-300 mb-8 md:mb-12">
               We follow a systematic approach to ERP implementation and automation, ensuring smooth
               transition and maximum business value. Our methodology focuses on your specific needs
               while maintaining industry best practices.
@@ -236,7 +246,8 @@ export default function ERPAutomationPage() {
       {/* Benefits Section */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-12 text-center">
+          <h2 data-aos= "fade-up"
+                     data-aos-delay="100" className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-12 text-center">
             Benefits of Our Services
           </h2>
 
@@ -276,9 +287,11 @@ export default function ERPAutomationPage() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>

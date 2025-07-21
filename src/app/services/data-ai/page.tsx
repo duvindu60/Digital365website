@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const features = [
   {
@@ -52,6 +55,11 @@ const benefits = [
 ];
 
 export default function DataAIPage() {
+
+  useEffect(() => {
+        AOS.init({ duration: 1000 });
+      }, []);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
@@ -71,10 +79,14 @@ export default function DataAIPage() {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-4xl md:text-5xl font-bold text-white mb-6">
               Data, AI/ML & Business Intelligence
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p 
+            data-aos="fade-up"
+                     data-aos-delay="200" className="text-xl text-gray-200 mb-8">
               Transform your business with advanced analytics, machine learning, and AI-powered
               insights. We help you harness the power of your data to drive innovation and growth.
             </p>
@@ -91,7 +103,9 @@ export default function DataAIPage() {
       {/* Main Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Our Data & AI Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,8 +127,12 @@ export default function DataAIPage() {
       <section className="py-20 bg-gradient-to-b from-black via-gray-900/90 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Our Data-First Approach</h2>
-            <p className="text-gray-300 mb-12">
+            <h2 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-8">Our Data-First Approach</h2>
+            <p
+             data-aos="fade-up"
+                     data-aos-delay="200" className="text-gray-300 mb-12">
               We help organizations unlock the full potential of their data through advanced
               analytics and AI solutions. Our comprehensive approach ensures you get actionable
               insights that drive business success.
@@ -170,7 +188,9 @@ export default function DataAIPage() {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Benefits of Our Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -196,9 +216,11 @@ export default function DataAIPage() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>

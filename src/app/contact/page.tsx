@@ -1,7 +1,10 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './contact.module.css';
 import GoogleMap from '@/components/GoogleMap';
+
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,6 +14,8 @@ export default function Contact() {
     serviceType: '',
     comments: '',
   });
+
+  const router = useRouter();
 
   const services = [
     'ERP & Automation Solutions',
@@ -32,13 +37,55 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Process the form submission
-    console.log('Form submitted:', formData);
-    // TODO: Send to backend API
-    alert('Form submitted successfully!');
-  };
+  // creating frontend only email sending form
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+    // Phone number validation: must be 10 digits
+  const phoneRegex = /^\d{10}$/;
+  if (!phoneRegex.test(formData.phone)) {
+    alert("Please enter a valid 10-digit mobile number.");
+    return;
+  }
+
+  const formBody = new URLSearchParams({
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    serviceType: formData.serviceType,
+    comments: formData.comments,
+    _captcha: "false",
+  });
+
+      try {
+        const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+
+    if (response.ok) {
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        serviceType: '',
+        comments: '',
+      });
+      router.push('/thank-you');
+    } else {
+      alert("Error submitting form.");
+    }
+  } catch (err) {
+    console.error("Submit error:", err);
+    alert("Error submitting form.");
+  }
+};
+
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
@@ -46,7 +93,7 @@ export default function Contact() {
       <div className="relative h-[200px] md:h-[300px] bg-gradient-to-b from-black to-transparent">
         <div className="absolute inset-0 bg-black/70 md:bg-black/50">
           <div className="container mx-auto px-4 h-full flex flex-col justify-center">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">Contact Us</h1>
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4 pt-[100px] md:pt-0">Contact Us</h1>
             <div className="flex items-center text-gray-300 text-sm md:text-base">
               <a href="/" className="hover:text-red-500">
                 Home
@@ -111,16 +158,20 @@ export default function Contact() {
                   Phone Number *
                 </label>
                 <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={`w-full px-3 md:px-4 py-2.5 md:py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 text-white text-sm md:text-base ${styles.formInput}`}
-                  placeholder="Add Phone Number"
-                  required
-                />
-              </div>
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    onInput={e => {
+                      // @ts-ignore
+                      e.target.value = e.target.value.replace(/\D/g, '');
+                    }}
+                    className={`w-full px-3 md:px-4 py-2.5 md:py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg focus:outline-none focus:border-red-500 text-white text-sm md:text-base ${styles.formInput}`}
+                    placeholder="Add Phone Number"
+                    required
+                  />
+                </div>
               <div>
                 <label
                   htmlFor="serviceType"
@@ -219,7 +270,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm md:text-base">Address</h4>
-                    <p className="text-gray-400 text-sm">31 Layards Rd, Colombo 00500</p>
+                    <p className="text-gray-400 text-sm">DIGITAL 365 (PVT) LTD
+NO 31, LAYARDS ROAD, COLOMBO 05, SRI LANKA.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 md:space-x-4">
@@ -241,7 +293,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm md:text-base">Phone</h4>
-                    <p className="text-gray-400 text-sm">+94 77 331 8654</p>
+                    <p className="text-gray-400 text-sm">+94 77 266 2064</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3 md:space-x-4">
@@ -263,7 +315,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-sm md:text-base">Email</h4>
-                    <p className="text-gray-400 text-sm">info@digital365.com</p>
+                    <p className="text-gray-400 text-sm">shiral@digital365.group</p>
                   </div>
                 </div>
               </div>

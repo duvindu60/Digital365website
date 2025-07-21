@@ -1,5 +1,10 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const values = [
   {
@@ -68,6 +73,9 @@ const stats = [
 ];
 
 export default function WhoWeArePage() {
+    useEffect(() => {
+      AOS.init({ duration: 1000 });
+    }, []);
   return (
     <div className="relative">
       {/* Hero Section */}
@@ -82,10 +90,12 @@ export default function WhoWeArePage() {
         </div>
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 animate-fade-in">
+            <h1 data-aos="fade-up"
+                     data-aos-delay="100" className="text-4xl sm:text-5xl font-bold text-white mb-6 animate-fade-in">
               Who We Are
             </h1>
-            <p className="text-lg text-gray-300 animate-fade-in-up">
+            <p data-aos="fade-up"
+                     data-aos-delay="200" className="text-lg text-gray-300 animate-fade-in-up">
               A team of dedicated professionals committed to delivering exceptional IT solutions.
             </p>
           </div>

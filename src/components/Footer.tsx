@@ -59,17 +59,17 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/who-we-are"
+                  href="/about"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Who We Are
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/blog" className="text-gray-400 hover:text-primary transition-colors">
                   Blog
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/contact"
@@ -80,7 +80,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/consult"
+                  href="/contact"
                   className="text-gray-400 hover:text-primary transition-colors"
                 >
                   Consult Now
@@ -162,7 +162,7 @@ export function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                contact@digital365.group
+                shiral@digital365.group
               </li>
               <li className="flex items-center justify-start text-gray-400">
                 <svg
@@ -178,7 +178,7 @@ export function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                +94 77 331 8654
+              +94 77 266 2064
               </li>
               <li className="flex items-center justify-start text-gray-400">
                 <svg
@@ -200,7 +200,7 @@ export function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                Layard's Road, Colombo 05, Sri Lanka
+                  No 31, layards road, colombo 05, sri lanka.
               </li>
             </ul>
           </div>

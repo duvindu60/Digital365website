@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';  
+import 'aos/dist/aos.css';
 
 const features = [
   {
@@ -52,6 +55,9 @@ const benefits = [
 ];
 
 export default function DigitalTransformationPage() {
+useEffect(() => {
+    AOS.init({ duration: 1000 }); }, []);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
@@ -71,10 +77,14 @@ export default function DigitalTransformationPage() {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 
+            data-aos="fade-up"
+              data-aos-delay="100" className="text-4xl md:text-5xl font-bold text-white mb-6">
               Digital Transformation & Strategy
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p 
+            data-aos= "fade-up"
+                     data-aos-delay="200" className="text-xl text-gray-200 mb-8">
               Transform your business for the digital age with our comprehensive digital
               transformation solutions. We help you navigate change, implement new technologies, and
               create sustainable competitive advantages.
@@ -92,7 +102,9 @@ export default function DigitalTransformationPage() {
       {/* Main Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos= "fade-up"
+                     data-aos-delay="300" className="text-3xl font-bold text-white mb-12 text-center">
             Our Digital Transformation Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -114,8 +126,12 @@ export default function DigitalTransformationPage() {
       <section className="py-20 bg-gradient-to-b from-black via-gray-900/90 to-black">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Our Transformation Approach</h2>
-            <p className="text-gray-300 mb-12">
+            <h2 
+            data-aos= "fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-8">Our Transformation Approach</h2>
+            <p 
+            data-aos= "fade-up"
+                     data-aos-delay="200" className="text-gray-300 mb-12">
               We take a holistic approach to digital transformation, ensuring that technology,
               processes, and people are aligned for successful change. Our methodology focuses on
               delivering measurable business value.
@@ -171,7 +187,9 @@ export default function DigitalTransformationPage() {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos= "fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Benefits of Digital Transformation
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -197,9 +215,11 @@ export default function DigitalTransformationPage() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>

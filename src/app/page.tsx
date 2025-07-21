@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const services = [
   {
@@ -64,6 +67,9 @@ export default function Home() {
   // Organize services in two rows for better layout
   const topRowServices = services.slice(0, 3);
   const bottomRowServices = services.slice(3);
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   return (
     <div className="min-h-screen md:bg-black">
@@ -120,13 +126,21 @@ export default function Home() {
               {/* <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-lg -z-10 md:hidden"></div> */}
 
               <div className="p-6 md:p-0">
-                <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-2 text-white leading-tight drop-shadow-md">
+                <h1 data-aos="fade-up"
+                     data-aos-delay="100"
+                      className="text-3xl sm:text-5xl md:text-7xl font-bold mb-2 md:mb-2 text-white leading-tight drop-shadow-md">
                   Transform Your Business With
                 </h1>
-                <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primary mb-4 md:mb-8 leading-tight drop-shadow-md">
+                <h2
+                    data-aos="fade-up"
+                     data-aos-delay="200"
+                      className="text-3xl sm:text-5xl md:text-7xl font-bold text-primary mb-4 md:mb-8 leading-tight drop-shadow-md">
                   Digital Excellence
                 </h2>
-                <p className="text-lg md:text-xl text-gray-200 mb-8 md:mb-8 drop-shadow-sm max-w-2xl mx-auto">
+                <p 
+                    data-aos="fade-up"
+                     data-aos-delay="300"
+                     className="text-lg md:text-2xl text-gray-200 mb-8 md:mb-8 drop-shadow-sm max-w-2xl mx-auto">
                   Empowering businesses to operate smarter, faster, and more efficiently in the
                   digital age
                 </p>
@@ -147,8 +161,10 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-black via-gray-800 to-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Services</h2>
-            <p className="text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto">
+            <h2 data-aos="fade-up"
+                     data-aos-delay="100" className="text-6xl font-bold text-white mb-4">Our Services</h2>
+            <p data-aos="fade-up"
+                     data-aos-delay="100" className="text-gray-300 text-2xl mb-8 md:mb-12 max-w-2xl mx-auto">
               Comprehensive digital solutions tailored to transform and elevate your business
             </p>
           </div>
@@ -163,14 +179,14 @@ export default function Home() {
                     <div className="w-full max-w-sm">
                       <Link
                         href={service.href}
-                        className="group relative overflow-hidden rounded-lg bg-black backdrop-blur-sm border border-gray-800 hover:border-primary transition-all duration-300 hover:-translate-y-1 block h-full"
+                        className="group relative overflow-hidden rounded-lg bg-black backdrop-blur-sm border border-gray-800 hover:border-primary transition-all duration-500 hover:-translate-y-1 block h-full"
                       >
                         <div className="relative h-64">
                           <Image
                             src={service.bgImage}
                             alt={service.title}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110 opacity-75"
+                            className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-75"
                             priority
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50" />
@@ -200,14 +216,14 @@ export default function Home() {
                     <div className="w-full max-w-sm">
                       <Link
                         href={service.href}
-                        className="group relative overflow-hidden rounded-lg bg-black backdrop-blur-sm border border-gray-800 hover:border-primary transition-all duration-300 hover:-translate-y-1 block h-full"
+                        className="group relative overflow-hidden rounded-lg bg-black backdrop-blur-sm border border-gray-800 hover:border-primary transition-all duration-500 hover:-translate-y-1 block h-full"
                       >
                         <div className="relative h-64">
                           <Image
                             src={service.bgImage}
                             alt={service.title}
                             fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110 opacity-75"
+                            className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-75"
                             priority
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/90 to-black/50" />
@@ -278,101 +294,98 @@ export default function Home() {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">Our Partners</h2>
-            <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
+            <h2 data-aos="fade-up"
+                     data-aos-delay="100" className="text-6xl font-bold text-white mb-4">Our Partners</h2>
+            <p data-aos="fade-up"
+                     data-aos-delay="200" className="text-gray-300 text-2xl mb-12 max-w-2xl mx-auto">
               Collaborating with industry leaders to deliver excellence
             </p>
           </div>
 
           {/* Desktop View - Hidden on Mobile */}
-          <div className="hidden md:grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            {/* Microsoft */}
-            <div className="flex flex-col items-center justify-center p-8 rounded-lg bg-black/50 hover:bg-black/70 transition-all">
-              <div className="relative w-48 h-24">
+          <div className="hidden md:grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Microsoft 
+            <div className="group relative w-full max-w-[250px] h-28 mx-auto rounded-xl overflow-hidden bg-white shadow-lg p-3
+             transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+               data-aos="zoom-in">
                 <Image
                   src="/images/microsoft-logo.png"
                   alt="Microsoft"
                   fill
-                  className="object-contain"
+                  className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   priority
                 />
-              </div>
-            </div>
+              </div> */}
 
             {/* Odoo */}
-            <div className="flex flex-col items-center justify-center p-8 rounded-lg bg-black/50 hover:bg-black/70 transition-all">
-              <div className="relative w-48 h-24">
-                <Image
-                  src="/images/odoo-logo.png"
-                  alt="Odoo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
+            <div
+             className="group relative w-full max-w-[250px] h-28 mx-auto rounded-xl overflow-hidden bg-white shadow-lg p-3
+             transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+               data-aos="zoom-in">
+              <Image
+                src="/images/odoo-logo.png"
+                alt="Odoo"
+                fill
+                className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+              />
             </div>
 
             {/* New Zing */}
-            <div className="flex flex-col items-center justify-center p-8 rounded-lg bg-black/50 hover:bg-black/70 transition-all">
-              <div className="relative w-48 h-24">
+            <div className="group relative w-full max-w-[250px] h-28 mx-auto rounded-xl overflow-hidden bg-white shadow-lg p-3
+             transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]"
+               data-aos="zoom-in">
                 <Image
                   src="/images/New-Zing-Logo.png"
                   alt="New Zing"
                   fill
-                  className="object-contain"
+                  className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
                   priority
                 />
               </div>
             </div>
-          </div>
+          
 
           {/* Mobile View - Horizontal Scrollable - Hidden on Desktop */}
-          <div
-            className="md:hidden overflow-x-auto -mx-4 scrollbar-hide"
+                    <div
+            className="md:hidden overflow-x-auto -mx-4 px-4 scrollbar-hide"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            data-aos="fade-left"
           >
-            <div className="flex px-2 space-x-2 justify-center items-center">
-              {/* Microsoft */}
-              <div
-                className="flex-shrink-0 flex items-center justify-center p-3 rounded-lg bg-black/50 hover:bg-black/70 transition-all"
-                style={{ minWidth: '120px', maxWidth: '140px' }}
-              >
-                <div className="relative w-24 h-12">
+            <div className="flex space-x-10 items-center">
+              {/* Microsoft 
+              <div className="flex-shrink-0 group rounded-xl bg-white p-3 shadow-md hover:shadow-xl transition-all duration-300 min-w-[140px]">
+                <div className="relative w-24 h-12 mx-auto">
                   <Image
                     src="/images/microsoft-logo.png"
                     alt="Microsoft"
                     fill
-                    className="object-contain"
+                    className="object-contain grayscale group-hover:grayscale-0 transition duration-300"
                     priority
                   />
                 </div>
-              </div>
+              </div> */}
+
               {/* Odoo */}
-              <div
-                className="flex-shrink-0 flex items-center justify-center p-3 rounded-lg bg-black/50 hover:bg-black/70 transition-all"
-                style={{ minWidth: '120px', maxWidth: '140px' }}
-              >
-                <div className="relative w-24 h-12">
+              <div className="flex-shrink-0 group rounded-xl bg-white p-3 shadow-md hover:shadow-xl transition-all duration-300 min-w-[160px]">
+                <div className="relative w-24 h-12 mx-auto">
                   <Image
                     src="/images/odoo-logo.png"
                     alt="Odoo"
                     fill
-                    className="object-contain"
+                    className="object-contain grayscale group-hover:grayscale-0 transition duration-300"
                     priority
                   />
                 </div>
               </div>
+
               {/* New Zing */}
-              <div
-                className="flex-shrink-0 flex items-center justify-center p-3 rounded-lg bg-black/50 hover:bg-black/70 transition-all"
-                style={{ minWidth: '120px', maxWidth: '140px' }}
-              >
-                <div className="relative w-24 h-12">
+              <div className="flex-shrink-0 group rounded-xl bg-white p-3 shadow-md hover:shadow-xl transition-all duration-300 min-w-[160px]">
+                <div className="relative w-24 h-12 mx-auto">
                   <Image
                     src="/images/New-Zing-Logo.png"
                     alt="New Zing"
                     fill
-                    className="object-contain"
+                    className="object-contain grayscale group-hover:grayscale-0 transition duration-300"
                     priority
                   />
                 </div>
@@ -391,9 +404,11 @@ export default function Home() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+        </Link>
         </div>
       </section>
     </div>

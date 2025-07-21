@@ -1,8 +1,11 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useEffect } from 'react';
 import { InfiniteLogoScroll } from '@/components/InfiniteLogoScroll';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const techPlatforms = [
   {
@@ -60,10 +63,12 @@ export default function TechnologyPage() {
         </div>
         <div className="relative container mx-auto h-full flex items-center px-4">
           <div className="max-w-2xl">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
+            <h1 data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
               Our Technology Solutions
             </h1>
-            <p className="text-base md:text-xl text-gray-300">
+            <p data-aos="fade-up"
+                     data-aos-delay="100" className="text-base md:text-xl text-gray-300">
               At Digital365, we leverage modern, enterprise-grade technologies to deliver robust
               digital solutions. From ERP systems and business intelligence to cloud infrastructure
               and automation, our technology stack ensures agility, security, and scalability.
@@ -80,37 +85,44 @@ export default function TechnologyPage() {
           </h2>
 
           {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-3 gap-8">
-            {techPlatforms.map((platform) => (
-              <div
-                key={platform.name}
-                className="p-8 rounded-lg transition-transform hover:-translate-y-2"
-              >
-                <div className="h-40 mb-6">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={platform.logo}
-                      alt={platform.name}
-                      fill
-                      className="object-contain"
-                      priority
-                    />
+                      <div className="hidden md:grid md:grid-cols-3 gap-8">
+              {techPlatforms.map((platform, index) => (
+                <div
+                  key={platform.name}
+                  className="group bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all hover:-translate-y-2"
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                >
+                  {/* Logo Section */}
+                  <div className="h-40 mb-6 bg-white rounded-xl overflow-hidden shadow-inner">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={platform.logo}
+                        alt={platform.name}
+                        fill
+                        className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                        priority
+                      />
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-white">{platform.name}</h3>
-                {platform.name === 'Microsoft Ecosystem' ? (
-                  <ul className="text-gray-400 list-disc list-inside space-y-2">
-                    {platform.description.split('\n').map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-400">{platform.description}</p>
-                )}
-              </div>
-            ))}
-          </div>
 
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold mb-4 text-white">{platform.name}</h3>
+
+                  {/* Description */}
+                  {platform.name === 'Microsoft Ecosystem' ? (
+                    <ul className="text-sm text-gray-300 list-disc list-inside space-y-2">
+                      {platform.description.split('\n').map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-sm text-gray-300">{platform.description}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          
           {/* Mobile Scrollable View */}
           <div
             ref={platformsScrollRef}
@@ -309,9 +321,11 @@ export default function TechnologyPage() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>

@@ -2,6 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const features = [
   {
@@ -47,6 +50,10 @@ const benefits = [
 ];
 
 export default function ITServicesPage() {
+  useEffect(() => {
+          AOS.init({ duration: 1000 });
+        }, []);
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
@@ -66,10 +73,14 @@ export default function ITServicesPage() {
 
         <div className="relative container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-4xl md:text-5xl font-bold text-white mb-6">
               IT Services & Outsourcing
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p 
+            data-aos="fade-up"
+                     data-aos-delay="200" className="text-xl text-gray-200 mb-8">
               Enhance your IT capabilities with our comprehensive outsourcing solutions. Get access
               to expert resources, 24/7 support, and cost-effective IT management.
             </p>
@@ -86,7 +97,9 @@ export default function ITServicesPage() {
       {/* Main Features */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">Our IT Services</h2>
+          <h2 
+          data-aos="fade-up"
+                     data-aos-delay="200" className="text-3xl font-bold text-white mb-12 text-center">Our IT Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
@@ -106,15 +119,20 @@ export default function ITServicesPage() {
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-8">Our Service Approach</h2>
-            <p className="text-gray-300 mb-12">
+            <h2 
+            data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-8">Our Service Approach</h2>
+            <p 
+            data-aos="fade-up"
+                     data-aos-delay="200" className="text-gray-300 mb-12">
               We follow a systematic approach to IT service delivery, ensuring high quality,
               reliability, and continuous improvement in all our engagements.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             <div className="bg-black/50 p-6 rounded-lg border border-gray-800">
-              <h3 className="text-xl font-semibold text-white mb-4">Service Delivery</h3>
+              <h3 
+               className="text-xl font-semibold text-white mb-4">Service Delivery</h3>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-center">
                   <span className="mr-2">✓</span>
@@ -162,7 +180,9 @@ export default function ITServicesPage() {
       {/* Benefits Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-12 text-center">
+          <h2 
+          data-aos="fade-up"
+                     data-aos-delay="100" className="text-3xl font-bold text-white mb-12 text-center">
             Benefits of IT Outsourcing
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -188,9 +208,11 @@ export default function ITServicesPage() {
           <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto">
             Let's discuss how our technology solutions can help you achieve your business goals.
           </p>
+          <Link href="/contact">
           <button className="px-6 md:px-8 py-3 bg-primary text-white rounded-full text-base md:text-lg font-semibold hover:opacity-90 transition-all transform hover:scale-105 shadow-lg">
             Get Started →
           </button>
+          </Link>
         </div>
       </section>
     </div>
