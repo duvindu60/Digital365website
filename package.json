@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json}\" --ignore-path .prettierignore",
+    "export": "next export",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css,json}\" --ignore-path .prettierignore"
   },
   "dependencies": {

@@ -1,18 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export', // ✅ THIS LINE ENABLES STATIC EXPORT
+
   images: {
+    unoptimized: true, // ✅ Disable image optimization for export
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   webpack: (config, { isServer }) => {
-    // Memory optimization settings
     config.optimization = {
       ...config.optimization,
       minimize: true,
     };
 
-    // Performance configuration for builds
     config.performance = {
       ...config.performance,
       maxAssetSize: 1024000,
@@ -20,7 +21,6 @@ const nextConfig = {
       hints: false,
     };
 
-    // Dev environment cache settings
     if (process.env.NODE_ENV === 'development') {
       config.cache = false;
     }
@@ -35,7 +35,6 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   swcMinify: true,
-  // Entry caching settings
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
