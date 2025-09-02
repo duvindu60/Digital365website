@@ -107,9 +107,9 @@ const handleSubmit = async (e: React.FormEvent) => {
 
       {/* Contact Form and Info Section */}
       <div className="container mx-auto px-4 py-10 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Contact Form */}
-          <div className="bg-[#111] p-5 md:p-8 rounded-lg shadow-xl">
+        <div className="grid grid-cols-1 gap-8 md:gap-12">
+          {/* Contact Form - COMMENTED OUT */}
+          {/* <div className="bg-[#111] p-5 md:p-8 rounded-lg shadow-xl">
             <h2 className="text-xl md:text-2xl font-bold text-white mb-6 lg:hidden">
               Get In Touch
             </h2>
@@ -236,7 +236,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 Submit Form
               </button>
             </form>
-          </div>
+          </div> */}
 
           {/* Contact Info and Map */}
           <div className="space-y-6 md:space-y-8">
